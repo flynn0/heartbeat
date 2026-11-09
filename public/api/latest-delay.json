@@ -1,0 +1,14 @@
+{
+  "id": "cron-2026-10-17",
+  "type": "cron",
+  "runId": "local-1794212238466",
+  "runNumber": 1,
+  "scheduledTime": "2026-10-17T03:14:00.000Z",
+  "actualTime": "2026-11-09T08:17:18.466Z",
+  "delayMs": 2005398466,
+  "delaySeconds": 2005398,
+  "delayFormatted": "+557h 3m 18s",
+  "actor": "system",
+  "commitSha": "local-dev",
+  "status": "success"
+}

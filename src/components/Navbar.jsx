@@ -2,7 +2,7 @@ import React from 'react';
 import { Heart, Moon, Sun, Tag, Radio } from 'lucide-react';
 import GithubIcon from './GithubIcon';
 
-export default function Navbar({ theme, onToggleTheme, version = '0.1.0' }) {
+export default function Navbar({ theme, onToggleTheme, version = '0.1.1' }) {
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-slate-950/80 border-b border-slate-200/80 dark:border-slate-800/80 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">

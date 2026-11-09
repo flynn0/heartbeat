@@ -1,0 +1,258 @@
+openapi: 3.1.0
+info:
+  title: Heartbeat Delay & Execution API
+  version: 0.1.1
+  description: >-
+    Machine-readable REST API for Heartbeat — GitHub Actions Cron Jitter & Runner Delay Observatory.
+    Provides endpoints to retrieve the latest cron schedule delay, latest manual trigger and delay,
+    and complete execution history with latency measurements.
+  contact:
+    name: Heartbeat Project
+    url: https://github.com/flynn0/heartbeat
+  license:
+    name: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: https://flynn0.github.io/heartbeat
+    description: Production GitHub Pages
+  - url: http://localhost:5173
+    description: Local Vite Development Server
+  - url: https://raw.githubusercontent.com/flynn0/heartbeat/main/public
+    description: Raw GitHub CDN
+paths:
+  /api/latest-delay.json:
+    get:
+      summary: Retrieve latest cron schedule delay time
+      description: Returns the most recent monthly cron execution (scheduled for the 17th of the month at 03:14:00 UTC) with its calculated runner queue delay time and execution metadata.
+      operationId: getLatestCronDelay
+      responses:
+        '200':
+          description: Latest cron execution measurement
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CronExecution'
+  /api/latest-manual.json:
+    get:
+      summary: Retrieve latest manual trigger and delay time
+      description: Returns the most recent manual workflow dispatch run, including dispatch time, actual execution time, queue delay time, and dispatch note.
+      operationId: getLatestManualTrigger
+      responses:
+        '200':
+          description: Latest manual trigger measurement
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManualExecution'
+  /api/history.json:
+    get:
+      summary: Retrieve complete execution history and measurements
+      description: Returns all historical cron jitter measurements and manual trigger dispatches, along with aggregate statistics (mean delay, min/max variance, total run counts).
+      operationId: getExecutionHistory
+      responses:
+        '200':
+          description: Complete execution history and measurements
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HistoryResponse'
+  /api/summary.json:
+    get:
+      summary: Retrieve status summary and metrics overview
+      description: Returns a consolidated summary object combining the latest cron delay, the latest manual trigger, queue health status, and next scheduled run timestamp.
+      operationId: getStatusSummary
+      responses:
+        '200':
+          description: Status summary overview
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SummaryResponse'
+components:
+  schemas:
+    CronExecution:
+      type: object
+      required:
+        - id
+        - type
+        - scheduledTime
+        - actualTime
+        - delayMs
+        - delaySeconds
+        - delayFormatted
+        - status
+      properties:
+        id:
+          type: string
+          example: cron-2026-10-17
+        type:
+          type: string
+          enum: [cron]
+          example: cron
+        runId:
+          type: string
+          example: '13000110'
+        runNumber:
+          type: integer
+          example: 10
+        scheduledTime:
+          type: string
+          format: date-time
+          example: '2026-10-17T03:14:00.000Z'
+        actualTime:
+          type: string
+          format: date-time
+          example: '2026-10-17T03:23:55.000Z'
+        delayMs:
+          type: integer
+          example: 595000
+        delaySeconds:
+          type: integer
+          example: 595
+        delayFormatted:
+          type: string
+          example: '+9m 55s'
+        actor:
+          type: string
+          example: 'github-actions[bot]'
+        commitSha:
+          type: string
+          example: '776c324'
+        status:
+          type: string
+          enum: [success, failure]
+          example: success
+    ManualExecution:
+      type: object
+      required:
+        - id
+        - type
+        - actualTime
+        - status
+      properties:
+        id:
+          type: string
+          example: manual-1762675269512
+        type:
+          type: string
+          enum: [manual]
+          example: manual
+        runId:
+          type: string
+          example: '14000001'
+        runNumber:
+          type: integer
+          example: 11
+        dispatchTime:
+          type: string
+          format: date-time
+          example: '2026-11-09T08:01:05.000Z'
+        actualTime:
+          type: string
+          format: date-time
+          example: '2026-11-09T08:01:09.512Z'
+        delayMs:
+          type: integer
+          example: 4512
+        delaySeconds:
+          type: integer
+          example: 5
+        delayFormatted:
+          type: string
+          example: '+5s'
+        actor:
+          type: string
+          example: flynn0
+        commitSha:
+          type: string
+          example: '776c324'
+        note:
+          type: string
+          example: Release verification trigger
+        status:
+          type: string
+          enum: [success, failure]
+          example: success
+    Statistics:
+      type: object
+      properties:
+        totalRuns:
+          type: integer
+          example: 12
+        cronRuns:
+          type: integer
+          example: 10
+        manualRuns:
+          type: integer
+          example: 2
+        latestCronDelaySeconds:
+          type: integer
+          example: 595
+        averageCronDelaySeconds:
+          type: integer
+          example: 587
+        minCronDelaySeconds:
+          type: integer
+          example: 214
+        maxCronDelaySeconds:
+          type: integer
+          example: 1098
+    HistoryResponse:
+      type: object
+      required:
+        - version
+        - lastUpdated
+        - statistics
+        - cronHistory
+        - manualHistory
+      properties:
+        version:
+          type: string
+          example: 0.1.1
+        lastUpdated:
+          type: string
+          format: date-time
+        statistics:
+          $ref: '#/components/schemas/Statistics'
+        cronHistory:
+          type: array
+          items:
+            $ref: '#/components/schemas/CronExecution'
+        manualHistory:
+          type: array
+          items:
+            $ref: '#/components/schemas/ManualExecution'
+    SummaryResponse:
+      type: object
+      required:
+        - version
+        - lastUpdated
+        - schedule
+        - nextScheduledRun
+        - latestCronDelay
+        - latestManualTrigger
+      properties:
+        version:
+          type: string
+          example: 0.1.1
+        lastUpdated:
+          type: string
+          format: date-time
+        schedule:
+          type: object
+          properties:
+            cron:
+              type: string
+              example: '14 3 17 * *'
+            description:
+              type: string
+              example: Every month on the 17th at 03:14:00 UTC
+        nextScheduledRun:
+          type: string
+          format: date-time
+        latestCronDelay:
+          $ref: '#/components/schemas/CronExecution'
+        latestManualTrigger:
+          $ref: '#/components/schemas/ManualExecution'
+        statistics:
+          $ref: '#/components/schemas/Statistics'

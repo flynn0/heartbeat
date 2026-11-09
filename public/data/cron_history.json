@@ -128,15 +128,15 @@
   {
     "id": "cron-2026-10-17",
     "type": "cron",
-    "runId": "13000110",
-    "runNumber": 10,
+    "runId": "local-1794212238466",
+    "runNumber": 1,
     "scheduledTime": "2026-10-17T03:14:00.000Z",
-    "actualTime": "2026-10-17T03:23:55.000Z",
-    "delayMs": 595000,
-    "delaySeconds": 595,
-    "delayFormatted": "+9m 55s",
-    "actor": "github-actions[bot]",
-    "commitSha": "776c324",
+    "actualTime": "2026-11-09T08:17:18.466Z",
+    "delayMs": 2005398466,
+    "delaySeconds": 2005398,
+    "delayFormatted": "+557h 3m 18s",
+    "actor": "system",
+    "commitSha": "local-dev",
     "status": "success"
   }
 ]

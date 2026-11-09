@@ -2,7 +2,7 @@ import React from 'react';
 import { Heart, GitCommit, Shield } from 'lucide-react';
 import GithubIcon from './GithubIcon';
 
-export default function Footer({ version = '0.1.0', lastUpdated }) {
+export default function Footer({ version = '0.1.1', lastUpdated }) {
   return (
     <footer className="mt-16 border-t border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-950 py-10 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

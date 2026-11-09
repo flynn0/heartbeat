@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-09T08:06:27.534Z",
+  "lastUpdated": "2026-11-09T08:17:46.256Z",
   "cron": [
     {
       "id": "cron-2026-01-17",
@@ -130,15 +130,15 @@
     {
       "id": "cron-2026-10-17",
       "type": "cron",
-      "runId": "13000110",
-      "runNumber": 10,
+      "runId": "local-1794212238466",
+      "runNumber": 1,
       "scheduledTime": "2026-10-17T03:14:00.000Z",
-      "actualTime": "2026-10-17T03:23:55.000Z",
-      "delayMs": 595000,
-      "delaySeconds": 595,
-      "delayFormatted": "+9m 55s",
-      "actor": "github-actions[bot]",
-      "commitSha": "776c324",
+      "actualTime": "2026-11-09T08:17:18.466Z",
+      "delayMs": 2005398466,
+      "delaySeconds": 2005398,
+      "delayFormatted": "+557h 3m 18s",
+      "actor": "system",
+      "commitSha": "local-dev",
       "status": "success"
     }
   ],
@@ -148,7 +148,11 @@
       "type": "manual",
       "runId": "42583544719",
       "runNumber": 1,
+      "dispatchTime": "2026-11-09T08:06:23.000Z",
       "actualTime": "2026-11-09T08:06:27.534Z",
+      "delayMs": 4534,
+      "delaySeconds": 5,
+      "delayFormatted": "+5s",
       "actor": "flynn0",
       "commitSha": "381f67c451e743b2edb4725ef787c9ecb859a647",
       "note": "Manual health check",
@@ -158,10 +162,14 @@
       "id": "manual-1794211269516",
       "type": "manual",
       "runId": "local-1794211269512",
-      "runNumber": 1,
+      "runNumber": 12,
+      "dispatchTime": "2026-11-09T08:01:05.000Z",
       "actualTime": "2026-11-09T08:01:09.512Z",
-      "actor": "system",
-      "commitSha": "local-dev",
+      "delayMs": 4512,
+      "delaySeconds": 5,
+      "delayFormatted": "+5s",
+      "actor": "flynn0",
+      "commitSha": "381f67c",
       "note": "Release v0.1.0 initial verification",
       "status": "success"
     },
@@ -169,10 +177,14 @@
       "id": "manual-1794210927444",
       "type": "manual",
       "runId": "local-1794210927440",
-      "runNumber": 1,
+      "runNumber": 11,
+      "dispatchTime": "2026-11-09T07:55:23.000Z",
       "actualTime": "2026-11-09T07:55:27.439Z",
+      "delayMs": 4439,
+      "delaySeconds": 4,
+      "delayFormatted": "+4s",
       "actor": "system",
-      "commitSha": "local-dev",
+      "commitSha": "776c324",
       "note": "Test setup verification",
       "status": "success"
     },
@@ -180,12 +192,56 @@
       "id": "manual-1762674312000",
       "type": "manual",
       "runId": "14000001",
-      "runNumber": 11,
+      "runNumber": 10,
+      "dispatchTime": "2026-11-09T07:45:06.000Z",
       "actualTime": "2026-11-09T07:45:12.000Z",
+      "delayMs": 6000,
+      "delaySeconds": 6,
+      "delayFormatted": "+6s",
       "actor": "flynn0",
       "commitSha": "776c324",
       "note": "Initial deployment verification trigger",
       "status": "success"
     }
-  ]
+  ],
+  "statistics": {
+    "totalRuns": 14,
+    "cronRuns": 10,
+    "manualRuns": 4,
+    "latestCronDelaySeconds": 2005398,
+    "averageCronDelaySeconds": 201067,
+    "minCronDelaySeconds": 214,
+    "maxCronDelaySeconds": 2005398
+  },
+  "api": {
+    "latestDelay": {
+      "id": "cron-2026-10-17",
+      "type": "cron",
+      "runId": "local-1794212238466",
+      "runNumber": 1,
+      "scheduledTime": "2026-10-17T03:14:00.000Z",
+      "actualTime": "2026-11-09T08:17:18.466Z",
+      "delayMs": 2005398466,
+      "delaySeconds": 2005398,
+      "delayFormatted": "+557h 3m 18s",
+      "actor": "system",
+      "commitSha": "local-dev",
+      "status": "success"
+    },
+    "latestManual": {
+      "id": "manual-1794211587536",
+      "type": "manual",
+      "runId": "42583544719",
+      "runNumber": 1,
+      "dispatchTime": "2026-11-09T08:06:23.000Z",
+      "actualTime": "2026-11-09T08:06:27.534Z",
+      "delayMs": 4534,
+      "delaySeconds": 5,
+      "delayFormatted": "+5s",
+      "actor": "flynn0",
+      "commitSha": "381f67c451e743b2edb4725ef787c9ecb859a647",
+      "note": "Manual health check",
+      "status": "success"
+    }
+  }
 }

@@ -4,13 +4,14 @@ import CountdownCard from './components/CountdownCard';
 import StatsGrid from './components/StatsGrid';
 import DelayChart from './components/DelayChart';
 import HistoryTable from './components/HistoryTable';
+import ApiExplorer from './components/ApiExplorer';
 import ExplainerSection from './components/ExplainerSection';
 import Footer from './components/Footer';
 
 // Bundled initial data
 import initialExecutionData from './data/executions.json';
 
-const VERSION = '0.1.0';
+const VERSION = '0.1.1';
 
 export default function App() {
   const [theme, setTheme] = useState(() => {
@@ -39,16 +40,22 @@ export default function App() {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
-  // Optional: try fetching live static data at runtime
+  // Fetch live static summary/data at runtime
   useEffect(() => {
-    fetch('./data/executions.json')
+    fetch('./api/history.json')
       .then((res) => {
         if (res.ok) return res.json();
-        throw new Error('Fallback to bundled data');
+        return fetch('./data/executions.json').then(r => r.json());
       })
       .then((liveData) => {
-        if (liveData && liveData.cron) {
-          setData(liveData);
+        if (liveData && (liveData.cron || liveData.cronHistory)) {
+          setData((prev) => ({
+            ...prev,
+            lastUpdated: liveData.lastUpdated || prev.lastUpdated,
+            cron: liveData.cronHistory || liveData.cron || prev.cron,
+            manual: liveData.manualHistory || liveData.manual || prev.manual,
+            statistics: liveData.statistics || prev.statistics,
+          }));
         }
       })
       .catch(() => {
@@ -84,6 +91,9 @@ export default function App() {
           manualData={data.manual}
           selectedRunId={selectedRunId}
         />
+
+        {/* REST API & OpenAPI Explorer */}
+        <ApiExplorer initialData={data} />
 
         {/* Educational / Context Section */}
         <ExplainerSection />
