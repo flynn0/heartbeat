@@ -1,5 +1,16 @@
 [
   {
+    "id": "manual-1794211587536",
+    "type": "manual",
+    "runId": "42583544719",
+    "runNumber": 1,
+    "actualTime": "2026-11-09T08:06:27.534Z",
+    "actor": "flynn0",
+    "commitSha": "381f67c451e743b2edb4725ef787c9ecb859a647",
+    "note": "Manual health check",
+    "status": "success"
+  },
+  {
     "id": "manual-1794211269516",
     "type": "manual",
     "runId": "local-1794211269512",
