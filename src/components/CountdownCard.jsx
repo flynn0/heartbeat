@@ -41,7 +41,7 @@ export default function CountdownCard() {
             Next Scheduled Heartbeat
           </h2>
           <p className="mt-1 text-sm text-rose-100/90 leading-relaxed">
-            Every month on the <strong className="text-white">17th at 3:14 AM UTC</strong>, this repo triggers
+            Every month on the <strong className="text-white">17th at 3:14 AM UTC</strong> (17 is prime &amp; 3:14 = &pi;), this repo triggers
             a scheduled GitHub Actions workflow to measure runner queue latency.
           </p>
 

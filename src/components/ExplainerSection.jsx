@@ -36,8 +36,7 @@ export default function ExplainerSection() {
             Why 17th @ 03:14 UTC?
           </h3>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-            Most GitHub Actions cron jobs are configured at top-of-the-hour (<code className="font-mono text-xs text-rose-500">00 * * * *</code>).
-            Scheduling at minute <strong className="text-slate-900 dark:text-white">14</strong> and hour <strong className="text-slate-900 dark:text-white">03</strong> (&pi; &approx; 3.14) avoids peak hour congestion while providing monthly cadence data.
+            The reason for the 17th at 3:14 AM is that <strong className="text-slate-900 dark:text-white">17 is a prime number</strong> and <strong className="text-slate-900 dark:text-white">3:14 represents the first 3 digits of &pi;</strong> (&pi; &approx; 3.14). This also avoids top-of-the-hour runner contention (<code className="font-mono text-xs text-rose-500">:00</code> and <code className="font-mono text-xs text-rose-500">:30</code>).
           </p>
         </div>
 

@@ -82,7 +82,10 @@ on:
 ```
 
 ### Why 3:14 AM on the 17th?
-- **Minute :14**: Most scheduled GitHub Actions jobs trigger at the top of the hour (`:00`) or half hour (`:30`), creating massive queue spikes. Scheduling at minute `14` (and hour `3`, echoing $\pi \approx 3.14$) minimizes shared runner queue congestion while providing consistent monthly health data.
+The reason for triggering on the **17th at 3:14 AM** is both mathematically inspired and practically advantageous:
+- **17 is a prime number**, ensuring unique cadence and distribution.
+- **3:14 represents the first 3 digits of &pi; ($\pi \approx 3.14$)**.
+- Most scheduled GitHub Actions jobs trigger at the top of the hour (`:00`) or half hour (`:30`), causing runner queue spikes. Running at minute `:14` avoids peak contention while reliably capturing infrastructure delay.
 
 ---
 
