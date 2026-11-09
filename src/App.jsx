@@ -8,10 +8,13 @@ import ApiExplorer from './components/ApiExplorer';
 import ExplainerSection from './components/ExplainerSection';
 import Footer from './components/Footer';
 
+// Dynamic version from package.json
+import packageJson from '../package.json';
+
 // Bundled initial data
 import initialExecutionData from './data/executions.json';
 
-const VERSION = '0.1.1';
+const VERSION = packageJson.version;
 
 export default function App() {
   const [theme, setTheme] = useState(() => {

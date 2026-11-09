@@ -6,7 +6,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 
-const VERSION = '0.1.1';
+// Read version dynamically from package.json
+const pkg = JSON.parse(fs.readFileSync(path.join(rootDir, 'package.json'), 'utf8'));
+const VERSION = pkg.version;
 
 // File paths
 const DATA_DIR = path.join(rootDir, 'data');
