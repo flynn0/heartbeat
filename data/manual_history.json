@@ -1,5 +1,20 @@
 [
   {
+    "id": "manual-1794219021047",
+    "type": "manual",
+    "runId": "42598883537",
+    "runNumber": 4,
+    "dispatchTime": "2026-11-09T10:10:16.844Z",
+    "actualTime": "2026-11-09T10:10:21.044Z",
+    "delayMs": 4200,
+    "delaySeconds": 4,
+    "delayFormatted": "+4s",
+    "actor": "flynn0",
+    "commitSha": "6ca50ff3cbaad3b79d766cb056ce384387b58ee8",
+    "note": "Manual health check",
+    "status": "success"
+  },
+  {
     "id": "manual-1794211587536",
     "type": "manual",
     "runId": "42583544719",

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-09T08:17:46.256Z",
+  "lastUpdated": "2026-11-09T10:10:21.044Z",
   "cron": [
     {
       "id": "cron-2026-01-17",
@@ -144,6 +144,21 @@
   ],
   "manual": [
     {
+      "id": "manual-1794219021047",
+      "type": "manual",
+      "runId": "42598883537",
+      "runNumber": 4,
+      "dispatchTime": "2026-11-09T10:10:16.844Z",
+      "actualTime": "2026-11-09T10:10:21.044Z",
+      "delayMs": 4200,
+      "delaySeconds": 4,
+      "delayFormatted": "+4s",
+      "actor": "flynn0",
+      "commitSha": "6ca50ff3cbaad3b79d766cb056ce384387b58ee8",
+      "note": "Manual health check",
+      "status": "success"
+    },
+    {
       "id": "manual-1794211587536",
       "type": "manual",
       "runId": "42583544719",
@@ -205,9 +220,9 @@
     }
   ],
   "statistics": {
-    "totalRuns": 14,
+    "totalRuns": 15,
     "cronRuns": 10,
-    "manualRuns": 4,
+    "manualRuns": 5,
     "latestCronDelaySeconds": 2005398,
     "averageCronDelaySeconds": 201067,
     "minCronDelaySeconds": 214,
@@ -229,17 +244,17 @@
       "status": "success"
     },
     "latestManual": {
-      "id": "manual-1794211587536",
+      "id": "manual-1794219021047",
       "type": "manual",
-      "runId": "42583544719",
-      "runNumber": 1,
-      "dispatchTime": "2026-11-09T08:06:23.000Z",
-      "actualTime": "2026-11-09T08:06:27.534Z",
-      "delayMs": 4534,
-      "delaySeconds": 5,
-      "delayFormatted": "+5s",
+      "runId": "42598883537",
+      "runNumber": 4,
+      "dispatchTime": "2026-11-09T10:10:16.844Z",
+      "actualTime": "2026-11-09T10:10:21.044Z",
+      "delayMs": 4200,
+      "delaySeconds": 4,
+      "delayFormatted": "+4s",
       "actor": "flynn0",
-      "commitSha": "381f67c451e743b2edb4725ef787c9ecb859a647",
+      "commitSha": "6ca50ff3cbaad3b79d766cb056ce384387b58ee8",
       "note": "Manual health check",
       "status": "success"
     }
